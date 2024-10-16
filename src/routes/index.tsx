@@ -1,8 +1,8 @@
+import { createHashRouter } from "react-router-dom";
 import LoginPage from "@/pages/auth/login";
 import RegisterPage from "@/pages/auth/register";
-import { createBrowserRouter } from "react-router-dom";
 
-export const router = createBrowserRouter([
+export const router = createHashRouter([
   {
     path: "/",
     element: <LoginPage />,
@@ -10,8 +10,8 @@ export const router = createBrowserRouter([
   {
     path: "/auth",
     children: [
-      { path: "/auth/login", index: true, element: <LoginPage /> },
-      { path: "/auth/register", element: <RegisterPage /> },
+      { path: "login", element: <LoginPage /> },
+      { path: "register", element: <RegisterPage /> },
     ],
   },
 ]);

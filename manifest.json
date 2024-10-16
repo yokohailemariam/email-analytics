@@ -1,0 +1,16 @@
+{
+  "manifest_version": 3,
+  "name": "Email analytics",
+  "version": "1.0.0",
+  "action": {
+    "default_title": "Email analytics"
+  },
+  "permissions": ["tabs"],
+  "background": {
+    "service_worker": "src/background.ts",
+    "type": "module"
+  },
+  "content_security_policy": {
+    "extension_pages": "script-src 'self' http://localhost:5173; object-src 'self'"
+  }
+}
