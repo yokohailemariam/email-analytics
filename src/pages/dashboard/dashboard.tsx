@@ -20,6 +20,8 @@ import {
 import { useSidebarDrawState } from "@/hooks/store";
 import { BarChartComponent } from "@/components/charts/BarChart";
 import { ChartConfig } from "@/components/ui/chart";
+import { LineChartComponent } from "@/components/charts/LineChart";
+import { PieChartComponent } from "@/components/charts/PieChart";
 
 const Sidebar = () => {
   const { isOpen, toggleSidebar } = useSidebarDrawState();
@@ -82,12 +84,12 @@ const DashboardTwo = () => {
     { time: "6 PM", responses: 25 },
   ];
 
-  const chartData3 = [
-    { name: "Meeting", value: 400 },
-    { name: "Proposal", value: 300 },
-    { name: "Budget", value: 200 },
-    { name: "Timeline", value: 100 },
-  ];
+  // const chartData3 = [
+  //   { name: "Meeting", value: 400 },
+  //   { name: "Proposal", value: 300 },
+  //   { name: "Budget", value: 200 },
+  //   { name: "Timeline", value: 100 },
+  // ];
 
   const chartConfig = {
     value: {
@@ -169,27 +171,24 @@ const DashboardTwo = () => {
                 </CardContent>
               </Card>
             </div>
-            <BarChartComponent
-              title={"Email Sent Time Analysis"}
-              dataKeyXAxis={"name"}
-              dataKeyBar={"value"}
-              chartConfig={chartConfig}
-              chartData={chartData}
-            />
-            <BarChartComponent
-              title={"Time Slots vs Responses"}
-              dataKeyXAxis={"time"}
-              dataKeyBar={"responses"}
-              chartConfig={chartConfig2}
-              chartData={chartData2}
-            />
-            <BarChartComponent
-              title={"Keyword Analysis"}
-              dataKeyXAxis={"name"}
-              dataKeyBar={"value"}
-              chartConfig={chartConfig}
-              chartData={chartData3}
-            />
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+              <BarChartComponent
+                title={"Email Sent Time Analysis"}
+                dataKeyXAxis={"name"}
+                dataKeyBar={"value"}
+                chartConfig={chartConfig}
+                chartData={chartData}
+              />
+              <LineChartComponent
+                title={"Time Slots vs Responses"}
+                dataKeyXAxis={"time"}
+                dataKeyBar={"responses"}
+                chartConfig={chartConfig2}
+                chartData={chartData2}
+              />
+            </div>
+            <PieChartComponent />
+
             {/* <Card>
               <CardHeader>
                 <CardTitle>Email Sent Time Analysis</CardTitle>
