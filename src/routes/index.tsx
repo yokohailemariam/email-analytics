@@ -10,6 +10,7 @@ import AdvancedInsights from "@/pages/advanced-insights/AdvancedInsights";
 import Integrations from "@/pages/integrations/Integrations";
 import Profile from "@/pages/profile/Profile";
 import EmailAnalysis from "@/pages/email-analysis/EmailAnalysis";
+import Auth from "@/pages/auth/auth";
 
 export const router = createHashRouter([
   {
