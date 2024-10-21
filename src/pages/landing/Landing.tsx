@@ -1,15 +1,29 @@
 import Loading from "@/components/Loading";
+import { useAuthStore } from "@/hooks/store";
 import { useEffect } from "react";
-import { useNavigate } from "react-router-dom";
+
+// import Cookies from "js-cookie";
 
 function Landing() {
-  const navigate = useNavigate();
+  //   const authToken = new URLSearchParams(window.location.search).get(
+  //     "auth_token"
+  //   );
+
+  //   useEffect(() => {
+  //     if (authToken) Cookies.set("credentials", authToken);
+  //   }, [authToken]);
+
+  const checkAuthentication = useAuthStore(
+    (state) => state.checkAuthentication
+  );
+  const isAuthenticated = useAuthStore((state) => state.isAuthenticated);
 
   useEffect(() => {
-    setTimeout(() => {
-      navigate("/auth/login");
-    }, 2000);
-  }, [navigate]);
+    checkAuthentication();
+    console.log(
+      isAuthenticated ? "User is authenticated" : "User is not authenticated"
+    );
+  }, [checkAuthentication, isAuthenticated]);
   return <Loading />;
 }
 

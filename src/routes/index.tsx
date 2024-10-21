@@ -1,18 +1,18 @@
 import { createHashRouter } from "react-router-dom";
-import LoginPage from "@/pages/auth/login";
-import RegisterPage from "@/pages/auth/register";
 import Dashboard from "@/pages/dashboard/dashboard";
 import Search from "@/pages/search/Search";
 import Landing from "@/pages/landing/Landing";
 import Sidebar from "@/components/Sidebar";
+import Auth from "@/pages/auth/auth";
 
 export const router = createHashRouter([
   {
     path: "/auth",
-    children: [
-      { path: "login", element: <LoginPage /> },
-      { path: "register", element: <RegisterPage /> },
-    ],
+    element: <Landing />,
+  },
+  {
+    path: "/login",
+    element: <Auth />,
   },
   {
     path: "/",
