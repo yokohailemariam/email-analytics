@@ -3,12 +3,12 @@ import Dashboard from "@/pages/dashboard/dashboard";
 import Search from "@/pages/search/Search";
 import Landing from "@/pages/landing/Landing";
 import Sidebar from "@/components/Sidebar";
-import Auth from "@/pages/auth/auth";
 import ResponderProfile from "@/pages/responder-profile/ResponderProfile";
 import DataVisualization from "@/pages/data-visualization/DataVisualization";
 import AdvancedInsights from "@/pages/advanced-insights/AdvancedInsights";
 import Integrations from "@/pages/integrations/Integrations";
 import Profile from "@/pages/profile/Profile";
+import Auth from "@/pages/auth/auth";
 import EmailStatistics from "@/pages/email-statistics/EmailStatistics";
 
 export const router = createHashRouter([
