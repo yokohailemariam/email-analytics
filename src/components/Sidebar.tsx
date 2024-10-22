@@ -25,12 +25,32 @@ const Sidebar = () => {
   const { pathname } = location;
 
   const menuItems = [
-    { icon: <Mail className="w-4 h-4" />, label: "Email Analysis" },
-    { icon: <Users className="w-4 h-4" />, label: "Responder Profile" },
-    { icon: <BarChart2 className="w-4 h-4" />, label: "Data Visualization" },
-    { icon: <Brain className="w-4 h-4" />, label: "Advanced Insights" },
-    { icon: <Link className="w-4 h-4" />, label: "Integrations" },
-    { icon: <User className="w-4 h-4" />, label: "Profile" },
+    {
+      icon: <Mail className="w-4 h-4" />,
+      label: "Email Analysis",
+      href: "/email-analysis",
+    },
+    {
+      icon: <Users className="w-4 h-4" />,
+      label: "Responder Profile",
+      href: "/responder-profile",
+    },
+    {
+      icon: <BarChart2 className="w-4 h-4" />,
+      label: "Data Visualization",
+      href: "/data-visualization",
+    },
+    {
+      icon: <Brain className="w-4 h-4" />,
+      label: "Advanced Insights",
+      href: "/advanced-insights",
+    },
+    {
+      icon: <Link className="w-4 h-4" />,
+      label: "Integrations",
+      href: "/integrations",
+    },
+    { icon: <User className="w-4 h-4" />, label: "Profile", href: "/profile" },
   ];
 
   const onChangeSearch = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -77,6 +97,7 @@ const Sidebar = () => {
               key={index}
               variant="ghost"
               className="w-full justify-start text-black hover:bg-black hover:text-white px-4 py-5"
+              onClick={() => navigate(item.href)}
             >
               {item.icon}
               <span className="ml-4">{item.label}</span>
