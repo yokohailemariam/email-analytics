@@ -1,6 +1,4 @@
 import { createHashRouter } from "react-router-dom";
-import LoginPage from "@/pages/auth/login";
-import RegisterPage from "@/pages/auth/register";
 import Dashboard from "@/pages/dashboard/dashboard";
 import Search from "@/pages/search/Search";
 import Landing from "@/pages/landing/Landing";
@@ -10,15 +8,17 @@ import DataVisualization from "@/pages/data-visualization/DataVisualization";
 import AdvancedInsights from "@/pages/advanced-insights/AdvancedInsights";
 import Integrations from "@/pages/integrations/Integrations";
 import Profile from "@/pages/profile/Profile";
-import EmailAnalysis from "@/pages/email-analysis/EmailAnalysis";
+import Auth from "@/pages/auth/auth";
+import EmailStatistics from "@/pages/email-statistics/EmailStatistics";
 
 export const router = createHashRouter([
   {
     path: "/auth",
-    children: [
-      { path: "login", element: <LoginPage /> },
-      { path: "register", element: <RegisterPage /> },
-    ],
+    element: <Landing />,
+  },
+  {
+    path: "/login",
+    element: <Auth />,
   },
   {
     path: "/",
@@ -49,8 +49,8 @@ export const router = createHashRouter([
         element: <DataVisualization />,
       },
       {
-        path: "/email-analysis",
-        element: <EmailAnalysis />,
+        path: "/email-statistics",
+        element: <EmailStatistics />,
       },
       {
         path: "/integrations",

@@ -1,4 +1,4 @@
-import { useSidebarDrawState } from "@/hooks/store";
+import { useSearchStore, useSidebarDrawState } from "@/hooks/store";
 import {
   Mail,
   Users,
@@ -8,17 +8,18 @@ import {
   X,
   User,
   Menu,
+  LayoutDashboard,
 } from "lucide-react";
 import { Button } from "./ui/button";
 import { Outlet, useLocation, useNavigate } from "react-router-dom";
 import { Input } from "./ui/input";
-import { useEffect, useState } from "react";
-import { useDebounce } from "use-debounce";
+import { useDebouncedCallback } from "use-debounce";
+import Logo from "../assets/logo.svg";
+import { cn } from "@/lib/utils";
 
 const Sidebar = () => {
+  const { q, setQ } = useSearchStore();
   const { isOpen, toggleSidebar } = useSidebarDrawState();
-  const [searchQuery, setSearchQuery] = useState("");
-  const [q] = useDebounce(searchQuery, 1000);
 
   const navigate = useNavigate();
   const location = useLocation();
@@ -26,9 +27,14 @@ const Sidebar = () => {
 
   const menuItems = [
     {
+      icon: <LayoutDashboard className="w-4 h-4" />,
+      label: "Dashboard",
+      href: "/dashboard",
+    },
+    {
       icon: <Mail className="w-4 h-4" />,
-      label: "Email Analysis",
-      href: "/email-analysis",
+      label: "Email Statistics",
+      href: "/email-statistics",
     },
     {
       icon: <Users className="w-4 h-4" />,
@@ -53,35 +59,33 @@ const Sidebar = () => {
     { icon: <User className="w-4 h-4" />, label: "Profile", href: "/profile" },
   ];
 
-  const onChangeSearch = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const value = e.target.value;
+  const onChangeSearch = useDebouncedCallback(
+    (e: React.ChangeEvent<HTMLInputElement>) => {
+      const value = e.target.value;
 
-    setSearchQuery(value);
+      setQ(value);
 
-    if (pathname !== "/search") {
-      navigate(`/search`);
-    }
+      if (pathname !== "/search") {
+        navigate(`/search`);
+      }
 
-    if (value === "") {
-      navigate(`/dashboard`);
-    }
-  };
-
-  useEffect(() => {
-    console.log(q);
-  }, [q]);
+      if (value === "") {
+        navigate(`/dashboard`);
+      }
+    },
+    1000
+  );
 
   return (
     <div className="flex h-screen bg-white">
       <div
-        className={`fixed inset-y-0 left-0 z-50 w-64 bg-white text-black transform transition-transform duration-200 ease-in-out shadow-md ${
+        className={`fixed inset-y-0 left-0 z-50 w-64 bg-primary-foreground text-black transform transition-transform duration-200 ease-in-out shadow-md ${
           isOpen ? "translate-x-0" : "-translate-x-full"
         } lg:translate-x-0`}
       >
-        <div className="flex items-center justify-between p-4">
-          <Button onClick={() => navigate("/dashboard")}>
-            <h2 className="text-xl font-bold">Dashboard</h2>
-          </Button>
+        <div className="flex items-center justify-between py-[1.03rem]">
+          <img src={Logo} className="px-2 max-w-[14rem]" />
+
           <Button
             variant="ghost"
             size="icon"
@@ -96,7 +100,11 @@ const Sidebar = () => {
             <Button
               key={index}
               variant="ghost"
-              className="w-full justify-start text-black hover:bg-black hover:text-white px-4 py-5"
+              className={cn(
+                "w-full justify-start text-black  hover:bg-primary  hover:text-white px-4 py-5",
+                item.href === pathname && "bg-primary text-white",
+                "hover:cursor-pointer"
+              )}
               onClick={() => navigate(item.href)}
             >
               {item.icon}
@@ -116,18 +124,44 @@ const Sidebar = () => {
             >
               <Menu className="h-6 w-6" />
             </Button>
-            <h1 className="text-2xl font-bold">Email Analysis </h1>
+            <h1 className="text-2xl font-bold">{headerTitle(pathname)}</h1>
           </div>
           <Input
             className="w-[300px]"
             placeholder="Search keywords..."
             onChange={onChangeSearch}
+            defaultValue={q}
           />
         </header>
-        <Outlet />
+        <div className="overflow-y-scroll">
+          <Outlet />
+        </div>
       </div>
     </div>
   );
 };
 
 export default Sidebar;
+
+const headerTitle = (pathname: string) => {
+  switch (pathname) {
+    case "/dashboard":
+      return "Dashboard";
+    case "/email-statistics":
+      return "Email Statistics";
+    case "/responder-profile":
+      return "Responder Profile";
+    case "/data-visualization":
+      return "Data Visualization";
+    case "/advanced-insights":
+      return "Advanced Insights";
+    case "/integrations":
+      return "Integrations";
+    case "/profile":
+      return "Profile";
+    case "/search":
+      return "Search";
+    default:
+      return "Dashboard";
+  }
+};

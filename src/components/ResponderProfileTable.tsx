@@ -27,7 +27,8 @@ type ResponderProfileResponse = {
 const responderProfileResponse: ResponderProfileResponse[] = [
   {
     id: 1,
-    image: "https://via.placeholder.com/150",
+    image:
+      "https://ui-avatars.com/api/?name=John+Doe&background=random&size=128",
     email: "johndoe@mail.com",
     name: "John Doe",
     body: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Sapiente a ullam ut in dicta, quis inventore tenetur minus obcaecati aut est, quia iure, optio quo accusamus. Earum animi perferendis culpa!",
@@ -36,7 +37,8 @@ const responderProfileResponse: ResponderProfileResponse[] = [
   },
   {
     id: 2,
-    image: "https://via.placeholder.com/150",
+    image:
+      "https://ui-avatars.com/api/?name=John+Doe&background=random&size=128",
     email: "janesmith@mail.com",
     name: "John Doe",
     body: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Sapiente a ullam ut in dicta, quis inventore tenetur minus obcaecati aut est, quia iure, optio quo accusamus. Earum animi perferendis culpa!",

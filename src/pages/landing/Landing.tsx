@@ -1,16 +1,22 @@
-import Loading from "@/components/Loading";
-import { useEffect } from "react";
-import { useNavigate } from "react-router-dom";
+import { EmailSyncLoader } from "@/components/EmailSync";
+import { useGetEmailSync } from "@/hooks/use-email-sync";
 
 function Landing() {
-  const navigate = useNavigate();
+  // const checkAuthentication = useAuthStore(
+  //   (state) => state.checkAuthentication
+  // );
+  // const isAuthenticated = useAuthStore((state) => state.isAuthenticated);
 
-  useEffect(() => {
-    setTimeout(() => {
-      navigate("/auth/login");
-    }, 2000);
-  }, [navigate]);
-  return <Loading />;
+  // useEffect(() => {
+  //   checkAuthentication();
+  //   console.log(
+  //     isAuthenticated ? "User is authenticated" : "User is not authenticated"
+  //   );
+  // }, [checkAuthentication, isAuthenticated]);
+
+  const { isLoading } = useGetEmailSync();
+
+  return <EmailSyncLoader isLoading={isLoading} />;
 }
 
 export default Landing;

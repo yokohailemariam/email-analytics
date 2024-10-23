@@ -45,7 +45,7 @@ export function BarChartComponent({
               cursor={false}
               content={<ChartTooltipContent hideLabel />}
             />
-            <Bar dataKey={dataKeyBar} radius={8} />
+            <Bar dataKey={dataKeyBar} radius={8} fill="#4A90E2" />
           </BarChart>
         </ChartContainer>
       </CardContent>
