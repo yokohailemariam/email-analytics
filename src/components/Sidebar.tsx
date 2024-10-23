@@ -3,10 +3,10 @@ import {
   Mail,
   Users,
   BarChart2,
-  Brain,
-  Link,
+  // Brain,
+  // Link,
   X,
-  User,
+  // User,
   Menu,
   LayoutDashboard,
 } from "lucide-react";
@@ -14,7 +14,7 @@ import { Button } from "./ui/button";
 import { Outlet, useLocation, useNavigate } from "react-router-dom";
 import { Input } from "./ui/input";
 import { useDebouncedCallback } from "use-debounce";
-import Logo from "../assets/logo.svg";
+import Logo from "../assets/logo.png";
 import { cn } from "@/lib/utils";
 
 const Sidebar = () => {
@@ -46,17 +46,17 @@ const Sidebar = () => {
       label: "Data Visualization",
       href: "/data-visualization",
     },
-    {
-      icon: <Brain className="w-4 h-4" />,
-      label: "Advanced Insights",
-      href: "/advanced-insights",
-    },
-    {
-      icon: <Link className="w-4 h-4" />,
-      label: "Integrations",
-      href: "/integrations",
-    },
-    { icon: <User className="w-4 h-4" />, label: "Profile", href: "/profile" },
+    // {
+    //   icon: <Brain className="w-4 h-4" />,
+    //   label: "Advanced Insights",
+    //   href: "/advanced-insights",
+    // },
+    // {
+    //   icon: <Link className="w-4 h-4" />,
+    //   label: "Integrations",
+    //   href: "/integrations",
+    // },
+    // { icon: <User className="w-4 h-4" />, label: "Profile", href: "/profile" },
   ];
 
   const onChangeSearch = useDebouncedCallback(

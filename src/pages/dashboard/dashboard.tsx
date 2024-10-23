@@ -62,7 +62,16 @@ const DashboardTwo = () => {
                     </p>
                   </div>
                 </div>
-                <Button variant="outline" size="sm">
+                <Button
+                  variant="outline"
+                  size="sm"
+                  onClick={() =>
+                    window.open(
+                      "https://www.linkedin.com/company/john-doe/?originalSubdomain=uk",
+                      "_blank"
+                    )
+                  }
+                >
                   View on LinkedIn
                 </Button>
               </div>
@@ -82,7 +91,16 @@ const DashboardTwo = () => {
                     </p>
                   </div>
                 </div>
-                <Button variant="outline" size="sm">
+                <Button
+                  variant="outline"
+                  size="sm"
+                  onClick={() =>
+                    window.open(
+                      " https://www.linkedin.com/in/jane-doe-08477b157/",
+                      "_blank"
+                    )
+                  }
+                >
                   View on LinkedIn
                 </Button>
               </div>
@@ -96,15 +114,15 @@ const DashboardTwo = () => {
           </CardHeader>
           <CardContent>
             <div className="flex flex-wrap gap-4">
-              <Button variant="outline">
+              <Button disabled={true} variant="outline">
                 <Link className="mr-2 size-6" />
                 Connect LinkedIn
               </Button>
-              <Button variant="outline">
+              <Button disabled={true} variant="outline">
                 <Link className="mr-2 size-6" />
                 Connect Salesforce
               </Button>
-              <Button variant="outline">
+              <Button disabled={true} variant="outline">
                 <Link className="mr-2 size-6" />
                 Connect HubSpot
               </Button>
