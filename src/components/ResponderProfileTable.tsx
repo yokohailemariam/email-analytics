@@ -58,6 +58,7 @@ const columns = [
         className="size-[40px] rounded-full"
       />
     ),
+    header: "Photo",
   }),
 
   columnHelper.accessor("name", {
@@ -67,14 +68,17 @@ const columns = [
         <div className="text-sm text-gray-500">{info.row.original.title}</div>
       </div>
     ),
+    header: "Name",
   }),
   columnHelper.accessor("body", {
     cell: (info) => (
       <div className="truncate max-w-sm md:max-w-xl">{info.getValue()}</div>
     ),
+    header: "Bio",
   }),
   columnHelper.accessor("date", {
     cell: (info) => info.getValue(),
+    header: "Date",
   }),
 ];
 
