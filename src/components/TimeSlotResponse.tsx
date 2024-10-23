@@ -1,12 +1,22 @@
 import { TChartData } from "@/types/api";
 import { LineChartComponent } from "./charts/LineChart";
 import { ChartConfig } from "./ui/chart";
-import { useGetResponseTimeSlot } from "@/hooks/use-data-visualization";
-import CircularLoader from "./CircularLoading";
+// import { useGetResponseTimeSlot } from "@/hooks/use-data-visualization";
+// import CircularLoader from "./CircularLoading";
 
 const TimeSlotResponse = () => {
-  const { data: ResponseTimeSlotData, isLoading: isLoadingResponseTimeSlot } =
-    useGetResponseTimeSlot();
+  // const { data: ResponseTimeSlotData, isLoading: isLoadingResponseTimeSlot } =
+  //   useGetResponseTimeSlot();
+
+  const ResponseTimeSlotData = {
+    "6am - 9am": 12,
+    "9am - 12pm": 18,
+    "12pm - 3pm": 12,
+    "3pm - 6pm": 22,
+    "6pm - 9pm": 10,
+    "9pm - 12am": 10,
+    "12am - 6am": 16,
+  };
 
   const convertToChartData = (
     data: typeof ResponseTimeSlotData
@@ -52,9 +62,9 @@ const TimeSlotResponse = () => {
     },
   } satisfies ChartConfig;
 
-  if (isLoadingResponseTimeSlot) {
-    return <CircularLoader />;
-  }
+  // if (isLoadingResponseTimeSlot) {
+  //   return <CircularLoader />;
+  // }
 
   return (
     <LineChartComponent

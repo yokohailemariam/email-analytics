@@ -1,18 +1,25 @@
-import CircularLoader from "@/components/CircularLoading";
+// import CircularLoader from "@/components/CircularLoading";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { useGetEmailStatistics } from "@/hooks/use-email-statistics";
+// import { useGetEmailStatistics } from "@/hooks/use-email-statistics";
 import { Clock, AlignLeft, Tag, AlertCircle } from "lucide-react";
 
 const EmailStatistics = () => {
-  const { data, isLoading } = useGetEmailStatistics();
+  // const { data, isLoading } = useGetEmailStatistics();
 
-  if (isLoading) {
-    return (
-      <div className="p-10">
-        <CircularLoader />
-      </div>
-    );
-  }
+  const data = {
+    average_email_length: 576.75,
+    average_response_time: 0,
+    top_keywords: [["Design", 41]],
+    non_responded_percentage: 100.0,
+  };
+
+  // if (isLoading) {
+  //   return (
+  //     <div className="p-10">
+  //       <CircularLoader />
+  //     </div>
+  //   );
+  // }
 
   return (
     <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 p-3">
