@@ -1,6 +1,6 @@
 import { BarChartComponent } from "@/components/charts/BarChart";
-import { LineChartComponent } from "@/components/charts/LineChart";
 import { PieChartComponent } from "@/components/charts/PieChart";
+import TimeSlotResponse from "@/components/TimeSlotResponse";
 import { ChartConfig } from "@/components/ui/chart";
 
 const DataVisualization = () => {
@@ -11,23 +11,9 @@ const DataVisualization = () => {
     { name: "6 PM - 12 AM", value: 278 },
   ];
 
-  const chartData2 = [
-    { time: "9 AM", responses: 10 },
-    { time: "12 PM", responses: 20 },
-    { time: "3 PM", responses: 15 },
-    { time: "6 PM", responses: 25 },
-  ];
-
   const chartConfig = {
     value: {
       label: "value",
-      color: "hsl(var(--chart-1))",
-    },
-  } satisfies ChartConfig;
-
-  const chartConfig2 = {
-    responses: {
-      label: "responses",
       color: "hsl(var(--chart-1))",
     },
   } satisfies ChartConfig;
@@ -42,13 +28,7 @@ const DataVisualization = () => {
           chartConfig={chartConfig}
           chartData={chartData}
         />
-        <LineChartComponent
-          title={"Time Slots vs Responses"}
-          dataKeyXAxis={"time"}
-          dataKeyBar={"responses"}
-          chartConfig={chartConfig2}
-          chartData={chartData2}
-        />
+        <TimeSlotResponse />
       </div>
       <PieChartComponent />
     </div>

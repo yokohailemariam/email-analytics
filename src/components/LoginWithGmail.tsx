@@ -2,8 +2,8 @@ import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { motion, AnimatePresence } from "framer-motion";
-import { BaseUrl } from "@/lib/utils";
 import Gmail from "../assets/gmail.svg";
+import { BaseUrl } from "@/api/axios";
 
 const GoogleLogin = () => {
   const [authState, setAuthState] = useState<"login" | "register">("login");

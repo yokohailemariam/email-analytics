@@ -1,30 +1,22 @@
-import Loading from "@/components/Loading";
-import { useAuthStore } from "@/hooks/store";
-import { useEffect } from "react";
-
-// import Cookies from "js-cookie";
+import { EmailSyncLoader } from "@/components/EmailSync";
+import { useGetEmailSync } from "@/hooks/use-email-sync";
 
 function Landing() {
-  //   const authToken = new URLSearchParams(window.location.search).get(
-  //     "auth_token"
+  // const checkAuthentication = useAuthStore(
+  //   (state) => state.checkAuthentication
+  // );
+  // const isAuthenticated = useAuthStore((state) => state.isAuthenticated);
+
+  // useEffect(() => {
+  //   checkAuthentication();
+  //   console.log(
+  //     isAuthenticated ? "User is authenticated" : "User is not authenticated"
   //   );
+  // }, [checkAuthentication, isAuthenticated]);
 
-  //   useEffect(() => {
-  //     if (authToken) Cookies.set("credentials", authToken);
-  //   }, [authToken]);
+  const { isLoading } = useGetEmailSync();
 
-  const checkAuthentication = useAuthStore(
-    (state) => state.checkAuthentication
-  );
-  const isAuthenticated = useAuthStore((state) => state.isAuthenticated);
-
-  useEffect(() => {
-    checkAuthentication();
-    console.log(
-      isAuthenticated ? "User is authenticated" : "User is not authenticated"
-    );
-  }, [checkAuthentication, isAuthenticated]);
-  return <Loading />;
+  return <EmailSyncLoader isLoading={isLoading} />;
 }
 
 export default Landing;

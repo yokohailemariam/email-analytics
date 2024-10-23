@@ -1,6 +1,5 @@
-import React from "react";
 import {
-  createColumnHelper,
+  AccessorKeyColumnDef,
   flexRender,
   getCoreRowModel,
   useReactTable,
@@ -14,47 +13,12 @@ import {
   TableRow,
 } from "@/components/ui/table";
 
-type EmailResponse = {
-  id: number;
-  email: string;
-  name: string;
-  body: string;
-  date: string;
-};
+interface SearchTableProps<T> {
+  columns: AccessorKeyColumnDef<T, string>[];
+  data: T[];
+}
 
-const emailResponse: EmailResponse[] = [
-  {
-    id: 1,
-    email: "john@mail.com",
-    name: "John Doe",
-    body: "Hello, how are you?",
-    date: "2021-10-10",
-  },
-  {
-    id: 2,
-    email: "jane@mail.com",
-    name: "Jane Smith",
-    body: "Hello, how are you?",
-    date: "2021-10-10",
-  },
-];
-
-const columnHelper = createColumnHelper<EmailResponse>();
-
-const columns = [
-  columnHelper.accessor("name", {
-    cell: (info) => info.getValue(),
-  }),
-  columnHelper.accessor("body", {
-    cell: (info) => info.getValue(),
-  }),
-  columnHelper.accessor("date", {
-    cell: (info) => info.getValue(),
-  }),
-];
-
-export default function SearchTable() {
-  const [data] = React.useState(() => [...emailResponse]);
+export default function ETable<T>({ columns, data }: SearchTableProps<T>) {
   const table = useReactTable({
     data,
     columns,

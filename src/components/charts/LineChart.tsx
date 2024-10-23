@@ -53,8 +53,7 @@ export function LineChartComponent({
             <Line
               dataKey={dataKeyBar}
               type="natural"
-              // stroke="var(--color-desktop)"
-              strokeWidth={2}
+              strokeWidth={3}
               dot={false}
             />
           </LineChart>

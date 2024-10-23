@@ -1,4 +1,4 @@
-import axiosInstance from "@/lib/utils";
+import axiosInstance from "@/api/axios";
 import { create } from "zustand";
 
 interface SidebarDrawState {
@@ -20,7 +20,7 @@ export const useAuthStore = create<AuthState>((set) => ({
   isAuthenticated: false,
   checkAuthentication: async () => {
     try {
-      const response = await axiosInstance.get("/api/email-metadata");
+      const response = await axiosInstance.get("/api/fetch-and-store-emails");
       if (response.headers["set-cookie"]) {
         set({ isAuthenticated: true });
       }
@@ -29,4 +29,14 @@ export const useAuthStore = create<AuthState>((set) => ({
       set({ isAuthenticated: false });
     }
   },
+}));
+
+type SearchState = {
+  q: string;
+  setQ: (q: string) => void;
+};
+
+export const useSearchStore = create<SearchState>((set) => ({
+  q: "",
+  setQ: (q) => set({ q }),
 }));

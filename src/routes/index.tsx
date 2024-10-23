@@ -9,7 +9,7 @@ import DataVisualization from "@/pages/data-visualization/DataVisualization";
 import AdvancedInsights from "@/pages/advanced-insights/AdvancedInsights";
 import Integrations from "@/pages/integrations/Integrations";
 import Profile from "@/pages/profile/Profile";
-import EmailAnalysis from "@/pages/email-analysis/EmailAnalysis";
+import EmailStatistics from "@/pages/email-statistics/EmailStatistics";
 
 export const router = createHashRouter([
   {
@@ -49,8 +49,8 @@ export const router = createHashRouter([
         element: <DataVisualization />,
       },
       {
-        path: "/email-analysis",
-        element: <EmailAnalysis />,
+        path: "/email-statistics",
+        element: <EmailStatistics />,
       },
       {
         path: "/integrations",
